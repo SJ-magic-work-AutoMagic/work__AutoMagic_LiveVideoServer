@@ -24,7 +24,6 @@ ofApp::~ofApp()
 void ofApp::exit()
 {
 	printMessage("Good-bye");
-	std::exit(1);
 }
 
 //--------------------------------------------------------------
@@ -47,7 +46,7 @@ void ofApp::setup(){
 	VideoCam.listDevices();// 上 2行がないと、表示されない.
 	
 	if(Cam_id == -1){
-		ofExit();
+		std::exit(1);
 	}else{
 		VideoCam.setDeviceID(Cam_id);
 	}
@@ -75,7 +74,7 @@ void ofApp::update(){
 		Osc_VJ.OscReceive.getNextMessage(&m_receive);
 		
 		if(m_receive.getAddress() == "/Quit"){
-			ofExit(1);
+			std::exit(1);
 		}
 	}
 	
