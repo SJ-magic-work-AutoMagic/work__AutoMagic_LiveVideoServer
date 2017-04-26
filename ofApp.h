@@ -129,6 +129,11 @@ class ofApp : public ofBaseApp{
 private:
 	/****************************************
 	****************************************/
+	enum STATE{
+		STATE_PLAY,
+		STATE_STOP,
+	};
+	
 	enum{
 		MONITOR_WIDTH = 320,
 		MONITOR_HEIGHT = 180,
@@ -140,13 +145,25 @@ private:
 
 	/****************************************
 	****************************************/
+	STATE State;
+	bool k_PLAY;
+	bool k_STOP;
+
+	ofTrueTypeFont font;
+
+	
 	OSC_TARGET Osc_VJ;
 	
 	ofxSyphonServer fbo_TextureSyphonServer;
 	ofFbo fbo;
 	
-	ofVideoGrabber VideoCam;
+	ofVideoGrabber *VideoCam;
 	int Cam_id;
+	
+	/****************************************
+	****************************************/
+	void Process_STOP_to_PLAY();
+	void Process_PLAY_to_STOP();
 
 	
 	
